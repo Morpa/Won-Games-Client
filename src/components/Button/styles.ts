@@ -58,7 +58,6 @@ export const Wrapper = styled.button<WrapperProps>`
 
     ${!!size && wrapperModifiers[size](theme)}
     ${!!fullWidth && wrapperModifiers.fullWidth()}
-    ${!!hasIcon &&
-    wrapperModifiers.withIcon(theme)}
+    ${!!hasIcon && wrapperModifiers.withIcon(theme)}
   `}
 `
