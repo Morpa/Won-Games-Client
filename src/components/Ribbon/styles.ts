@@ -60,7 +60,7 @@ export const Wrapper = styled.div<RibbonProps>`
       border-bottom-width: 1rem;
     }
 
-    ${!!size && wrapperModifiers[size](theme)}
-    ${!!color && wrapperModifiers.color(theme, color)}
+    ${!!size && wrapperModifiers[size](theme)};
+    ${!!color && wrapperModifiers.color(theme, color)};
   `}
 `
