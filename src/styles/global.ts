@@ -46,6 +46,7 @@ const GlobalStyles: GlobalStyleComponent<
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    outline: none;
 
     &::before,
     &::after {
