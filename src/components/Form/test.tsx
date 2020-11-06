@@ -17,7 +17,7 @@ describe('<Form />', () => {
         margin: 0.8rem 0;
       }
 
-      .c0 .sc-gKAblj {
+      .c0 .sc-iCoHVE {
         margin: 3.2rem auto 1.6rem;
       }
 
