@@ -30,6 +30,7 @@ const Banner = ({
         {ribbon}
       </Ribbon>
     )}
+
     <S.Image src={img} role="img" aria-label={title} />
 
     <S.Caption>
