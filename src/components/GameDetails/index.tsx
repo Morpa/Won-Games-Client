@@ -11,6 +11,7 @@ type Rating = 'pegi0' | 'pegi10' | 'pegi12' | 'pegi14' | 'pegi16' | 'pegi18'
 
 export type GameDetailsProps = {
   developer: string
+  publisher: string
   platforms: Platform[]
   releaseDate: string
   rating: Rating
@@ -22,6 +23,7 @@ const GameDetails = ({
   platforms,
   releaseDate,
   rating,
+  publisher,
   genres
 }: GameDetailsProps) => {
   const platformIcons = {
@@ -66,7 +68,7 @@ const GameDetails = ({
 
         <S.Block>
           <S.Label>Publisher</S.Label>
-          <S.Description>2K</S.Description>
+          <S.Description>{publisher}</S.Description>
         </S.Block>
 
         <S.Block>
