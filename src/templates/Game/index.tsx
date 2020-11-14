@@ -5,9 +5,9 @@ import TextContent from 'components/TextContent'
 import GameDetails, { GameDetailsProps } from 'components/GameDetails'
 import { GameCardProps } from 'components/GameCard'
 import { HighlightProps } from 'components/Highlight'
+import ShowCase from 'components/ShowCase'
 
 import * as S from './styles'
-import ShowCase from 'components/ShowCase'
 
 export type GameTemplateProps = {
   cover: string
@@ -15,8 +15,8 @@ export type GameTemplateProps = {
   gallery?: GalleryImageProps[]
   description: string
   details: GameDetailsProps
-  upcommingGames: GameCardProps[]
-  upcommingHighlight: HighlightProps
+  upcomingGames: GameCardProps[]
+  upcomingHighlight: HighlightProps
   recommendedGames: GameCardProps[]
 }
 
@@ -26,8 +26,8 @@ const Game = ({
   gallery,
   description,
   details,
-  upcommingGames,
-  upcommingHighlight,
+  upcomingGames,
+  upcomingHighlight,
   recommendedGames
 }: GameTemplateProps) => (
   <Base>
@@ -51,9 +51,9 @@ const Game = ({
       </S.SectionGameDetails>
 
       <ShowCase
-        title="Upcomming"
-        games={upcommingGames}
-        highlight={upcommingHighlight}
+        title="Upcoming"
+        games={upcomingGames}
+        highlight={upcomingHighlight}
       />
 
       <ShowCase title="You may like these games" games={recommendedGames} />

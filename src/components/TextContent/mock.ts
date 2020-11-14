@@ -1,4 +1,6 @@
-export default {
+import { TextContentProps } from '.'
+
+const TextContentMock: TextContentProps = {
   title: 'Description',
 
   content: `<h1>Heading</h1>
@@ -50,3 +52,5 @@ export default {
       numquam ad perspiciatis doloribus error eveniet quo officia?
     </p>`
 }
+
+export default TextContentMock
