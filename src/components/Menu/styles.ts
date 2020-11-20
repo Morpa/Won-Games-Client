@@ -22,9 +22,9 @@ export const LogoWrapper = styled.div`
 export const IconWrapper = styled.div`
   ${({ theme }) => css`
     color: ${theme.colors.white};
+    cursor: pointer;
     width: 2.4rem;
     height: 2.4rem;
-    cursor: pointer;
   `}
 `
 
@@ -44,9 +44,9 @@ export const MenuGroup = styled.div`
 export const MenuNav = styled.div`
   ${({ theme }) => css`
     ${media.greaterThan('medium')`
-margin-left: ${theme.spacings.small};
-`}
-  `}
+			margin-left: ${theme.spacings.small};
+		`}
+  `};
 `
 
 export const MenuLink = styled.a`
@@ -59,7 +59,7 @@ export const MenuLink = styled.a`
     text-align: center;
 
     &:hover {
-      &::after {
+      &:after {
         content: '';
         position: absolute;
         display: block;
@@ -99,8 +99,8 @@ export const MenuFull = styled.nav<MenuFullProps>`
     left: 0;
     right: 0;
     height: 100vh;
-    transition: opacity ${theme.transition.default};
     overflow: hidden;
+    transition: opacity 0.3s ease-in-out;
     opacity: ${isOpen ? 1 : 0};
     pointer-events: ${isOpen ? 'all' : 'none'};
 
@@ -128,15 +128,16 @@ export const MenuFull = styled.nav<MenuFullProps>`
       font-size: ${theme.font.sizes.xlarge};
       margin-bottom: ${theme.spacings.small};
       transform: ${isOpen ? 'translateY(0)' : 'translateY(3rem)'};
-      transition: transform ${theme.transition.default};
+      transition: transform 0.3s ease-in-out;
     }
 
     ${RegisterBox} {
       transform: ${isOpen ? 'translateY(0)' : 'translateY(3rem)'};
-      transition: transform ${theme.transition.default};
+      transition: transform 0.3s ease-in-out;
     }
   `}
 `
+
 export const RegisterBox = styled.div`
   ${({ theme }) => css`
     display: flex;
