@@ -182,4 +182,4 @@ exports[`<ProfileMenu /> should render the menu 1`] = `
     </span>
   </a>
 </nav>
-`;
+`
