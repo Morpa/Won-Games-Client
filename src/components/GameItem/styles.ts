@@ -72,6 +72,13 @@ export const DownloadLink = styled.a`
   ${({ theme }) => css`
     color: ${theme.colors.primary};
     margin-left: ${theme.spacings.xxsmall};
+    position: relative;
+
+    & > svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
   `}
 `
 
