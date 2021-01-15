@@ -14,7 +14,7 @@ type Field = {
   name: string
 }
 
-export type InputProps = {
+export type ItemProps = {
   title: string
   name: string
   type: string
@@ -26,7 +26,7 @@ type Values = {
 }
 
 export type ExploreSidebarProps = {
-  items: InputProps[]
+  items: ItemProps[]
   initialValues?: Values
   onFilter: (values: Values) => void
 }
