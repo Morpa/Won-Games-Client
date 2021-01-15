@@ -45,6 +45,7 @@ const ExploreSidebar = ({
 
   const handleFilter = () => {
     onFilter(values)
+    setIsOpen(false)
   }
 
   return (
