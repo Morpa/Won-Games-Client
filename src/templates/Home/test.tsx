@@ -10,21 +10,21 @@ import Home from '.'
 
 const props = {
   banners: bannerMock,
-  newGames: [gamesMock[0]],
+  newGames: gamesMock,
   mostPopularHighlight: highlightMock,
-  mostPopularGames: [gamesMock[0]],
-  upcomingGames: [gamesMock[0]],
-  upcomingHighligth: highlightMock,
-  upcomingMoreGames: [gamesMock[0]],
-  freeGames: [gamesMock[0]],
-  freeHighligth: highlightMock
+  mostPopularGames: gamesMock,
+  upcomingGames: gamesMock,
+  upcomingHighlight: highlightMock,
+  upcomingMoreGames: gamesMock,
+  freeGames: gamesMock,
+  freeHighlight: highlightMock
 }
 
-jest.mock('components/ShowCase', () => {
+jest.mock('components/Showcase', () => {
   return {
     __esModule: true,
     default: function Mock() {
-      return <div data-testid="Mock ShowCase"></div>
+      return <div data-testid="Mock Showcase"></div>
     }
   }
 })
@@ -43,6 +43,7 @@ describe('<Home />', () => {
     renderWithTheme(<Home {...props} />)
 
     expect(screen.getByTestId('Mock Banner Slider')).toBeInTheDocument()
-    expect(screen.getAllByTestId('Mock ShowCase')).toHaveLength(5)
+
+    expect(screen.getAllByTestId('Mock Showcase')).toHaveLength(5)
   })
 })
