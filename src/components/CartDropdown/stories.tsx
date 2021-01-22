@@ -8,7 +8,7 @@ export default {
   component: CartDropdown,
   args: {
     items,
-    total: '300,00€'
+    total: 300
   },
   parameters: {
     backgrounds: {
