@@ -36,4 +36,10 @@ describe('<GameInfo />', () => {
       screen.getByRole('button', { name: /wishlist/i })
     ).toBeInTheDocument()
   })
+
+  it('should render a free when price is 0', () => {
+    renderWithTheme(<GameInfo {...props} price={0} />)
+
+    expect(screen.getByText('FREE')).toBeInTheDocument()
+  })
 })

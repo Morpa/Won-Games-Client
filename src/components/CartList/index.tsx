@@ -4,11 +4,13 @@ import Button from 'components/Button'
 import Empty from 'components/Empty'
 import GameItem, { GameItemProps } from 'components/GameItem'
 
+import formatPrice from 'utils/format-price'
+
 import * as S from './styles'
 
 export type CartListProps = {
   items?: GameItemProps[]
-  total?: string
+  total?: number
   hasButton?: boolean
 }
 
@@ -22,7 +24,7 @@ const CartList = ({ items = [], total, hasButton = false }: CartListProps) => (
 
         <S.Footer>
           {!hasButton && <span>Total:</span>}
-          <S.Total>{total}</S.Total>
+          <S.Total>{total! > 0 ? formatPrice(total!) : total}</S.Total>
 
           {hasButton && (
             <Link href="/cart">

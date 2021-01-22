@@ -1,5 +1,7 @@
 import { Download } from '@styled-icons/boxicons-solid/Download'
 
+import formatPrice from 'utils/format-price'
+
 import * as S from './styles'
 
 export type PaymentInfoProps = {
@@ -12,7 +14,7 @@ export type PaymentInfoProps = {
 export type GameItemProps = {
   img: string
   title: string
-  price: string
+  price: number
   downloadLink?: string
   paymentInfo?: PaymentInfoProps
 }
@@ -43,7 +45,7 @@ const GameItem = ({
             </S.DownloadLink>
           )}
         </S.Title>
-        <S.Price>{price}</S.Price>
+        <S.Price>{price > 0 ? formatPrice(price) : 'FREE'}</S.Price>
       </S.Content>
     </S.GameContent>
 
