@@ -3,10 +3,14 @@ import { ThemeProvider } from 'styled-components'
 import { AppProps } from 'next/app'
 import Head from 'next/head'
 
+import { useApollo } from 'utils/apollo'
+
 import GlobalStyles from 'styles/global'
 import theme from 'styles/theme'
 
 function App({ Component, pageProps }: AppProps) {
+  const client = useApollo(pageProps.initialApolloState)
+
   return (
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
