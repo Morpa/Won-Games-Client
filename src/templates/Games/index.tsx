@@ -9,9 +9,9 @@ import Base from 'templates/Base'
 import ExploreSidebar, { ItemProps } from 'components/ExploreSidebar'
 import GameCard, { GameCardProps } from 'components/GameCard'
 import { Grid } from 'components/Grid'
+import Loading from 'components/Loading'
 
 import * as S from './styles'
-import Loading from 'components/Loading'
 
 export type GamesTemplateProps = {
   games?: GameCardProps[]
