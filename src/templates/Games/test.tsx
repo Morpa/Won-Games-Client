@@ -6,7 +6,7 @@ import { renderWithTheme } from 'utils/tests/helpers'
 import apolloCache from 'utils/apolloCache'
 
 import filterItemsMock from 'components/ExploreSidebar/mock'
-import { fetchMoreMock, gamesMock } from './mocks'
+import { fetchMoreMock, gamesMock, noGamesMock } from './mocks'
 
 import Games from '.'
 
@@ -50,7 +50,7 @@ describe('<Games />', () => {
     ).toBeInTheDocument()
   })
 
-  /* it('should render empty when no games found', async () => {
+  it('should render empty when no games found', async () => {
     renderWithTheme(
       <MockedProvider mocks={[noGamesMock]} addTypename={false}>
         <Games filterItems={filterItemsMock} />
@@ -60,7 +60,7 @@ describe('<Games />', () => {
     expect(
       await screen.findByText(/We didn't find any games with this filter/i)
     ).toBeInTheDocument()
-  }) */
+  })
 
   /* it('should render more games when show more is clicked', async () => {
     renderWithTheme(
