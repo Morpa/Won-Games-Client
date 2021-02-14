@@ -9,7 +9,7 @@ describe('<Loading />', () => {
 
     expect(
       screen.getByRole('img', {
-        name: /Joystick heart animation/i
+        name: /Loading more games/i
       })
     ).toBeInTheDocument()
 
