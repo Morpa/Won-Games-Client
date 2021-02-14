@@ -62,7 +62,7 @@ describe('<Games />', () => {
     ).toBeInTheDocument()
   })
 
-  /* it('should render more games when show more is clicked', async () => {
+  it('should render more games when show more is clicked', async () => {
     renderWithTheme(
       <MockedProvider mocks={[gamesMock, fetchMoreMock]} cache={apolloCache}>
         <Games filterItems={filterItemsMock} />
@@ -74,7 +74,7 @@ describe('<Games />', () => {
     userEvent.click(await screen.findByRole('button', { name: /show more/i }))
 
     expect(await screen.findByText(/Fetch More Game/i)).toBeInTheDocument()
-  }) */
+  })
 
   it('should change push router when selecting a filter', async () => {
     renderWithTheme(
