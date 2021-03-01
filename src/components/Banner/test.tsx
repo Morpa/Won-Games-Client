@@ -1,6 +1,7 @@
-import { screen } from '@testing-library/react'
-import { renderWithTheme } from 'utils/tests/helpers'
-
+import { render, screen } from 'utils/test-utils'
+//substituir o render with theme e screen no restante _> menu
+//apos apagar a pasta test do utils
+//Add CartProvider to _app and create customRender to tests
 import Banner from '.'
 
 const props = {
@@ -13,7 +14,7 @@ const props = {
 
 describe('<Banner />', () => {
   it('should render correctly', () => {
-    const { container } = renderWithTheme(<Banner {...props} />)
+    const { container } = render(<Banner {...props} />)
 
     expect(
       screen.getByRole('heading', { name: /Defy death/i })
@@ -29,7 +30,7 @@ describe('<Banner />', () => {
   })
 
   it('should render a Ribbon', () => {
-    renderWithTheme(
+    render(
       <Banner
         {...props}
         ribbon="My Ribbon"
