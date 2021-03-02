@@ -1,7 +1,5 @@
 import { render, screen } from 'utils/test-utils'
-//substituir o render with theme e screen no restante _> menu
-//apos apagar a pasta test do utils
-//Add CartProvider to _app and create customRender to tests
+
 import Banner from '.'
 
 const props = {
