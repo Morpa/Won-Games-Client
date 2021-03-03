@@ -1,11 +1,18 @@
 import { render, screen } from 'utils/test-utils'
+import { CartContextDefaultValues } from 'hooks/use-cart'
 
 import CartList from '.'
-import mockItems from './mock'
+import items from './mock'
 
 describe('<CartList />', () => {
   it('should render the cart list', () => {
-    const { container } = render(<CartList items={mockItems} total={330} />)
+    const cartProviderProps = {
+      ...CartContextDefaultValues,
+      items,
+      total: '$330.00'
+    }
+
+    const { container } = render(<CartList />, { cartProviderProps })
 
     expect(screen.getAllByRole('heading')).toHaveLength(2)
 
@@ -15,7 +22,12 @@ describe('<CartList />', () => {
   })
 
   it('should render the button', () => {
-    render(<CartList items={mockItems} total={330} hasButton />)
+    const cartProviderProps = {
+      ...CartContextDefaultValues,
+      items
+    }
+
+    render(<CartList hasButton />, { cartProviderProps })
 
     expect(screen.getByText(/buy it now/i)).toBeInTheDocument()
   })
