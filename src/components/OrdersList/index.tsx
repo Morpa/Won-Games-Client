@@ -1,7 +1,6 @@
 import Empty from 'components/Empty'
 import GameItem, { GameItemProps } from 'components/GameItem'
 import Heading from 'components/Heading'
-
 import * as S from './styles'
 
 export type OrdersListProps = {
@@ -15,7 +14,7 @@ const OrdersList = ({ items = [] }: OrdersListProps) => (
     </Heading>
 
     {items.length ? (
-      items?.map((item) => <GameItem key={item.downloadLink} {...item} />)
+      items.map((item) => <GameItem key={item.downloadLink} {...item} />)
     ) : (
       <Empty
         title="You have no orders yet"
