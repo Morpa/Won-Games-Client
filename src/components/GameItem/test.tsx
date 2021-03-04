@@ -70,10 +70,4 @@ describe('<GameItem />', () => {
     expect(screen.getByText(paymentInfo.number)).toBeInTheDocument()
     expect(screen.getByText(paymentInfo.purchaseDate)).toBeInTheDocument()
   })
-
-  it('should render a free when price is 0', () => {
-    render(<GameItem {...props} price="0" />)
-
-    expect(screen.getByText('FREE')).toBeInTheDocument()
-  })
 })
