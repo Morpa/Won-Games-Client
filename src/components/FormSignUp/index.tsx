@@ -76,10 +76,10 @@ const FormSignUp = () => {
         />
 
         <TextField
-          name="confirm-password"
+          name="confirm_password"
           placeholder="Confirm password"
           type="password"
-          onInputChange={(v) => handleInput('confirm-password', v)}
+          onInputChange={(v) => handleInput('confirm_password', v)}
           icon={<Lock />}
         />
 
