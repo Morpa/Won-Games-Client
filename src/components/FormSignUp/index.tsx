@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import { signIn } from 'next-auth/client'
 import { AccountCircle, Email, Lock } from '@styled-icons/material-outlined'
 import { useMutation } from '@apollo/client'
 
@@ -17,9 +18,17 @@ const FormSignUp = () => {
     password: ''
   })
 
-  const [loading, setLoading] = useState(false)
-
-  const [createUser] = useMutation(MUTATION_REGISTER)
+  const [createUser, { error, loading }] = useMutation(MUTATION_REGISTER, {
+    onError: (err) => console.error(err),
+    onCompleted: () => {
+      !error &&
+        signIn('credentials', {
+          email: values.email,
+          password: values.password,
+          callbackUrl: '/'
+        })
+    }
+  })
 
   const handleInput = (field: string, value: string) => {
     setValues((s) => ({ ...s, [field]: value }))
@@ -27,8 +36,6 @@ const FormSignUp = () => {
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
-
-    setLoading(true)
 
     createUser({
       variables: {
@@ -39,8 +46,6 @@ const FormSignUp = () => {
         }
       }
     })
-
-    setLoading(false)
   }
 
   return (
