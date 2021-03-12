@@ -4,43 +4,12 @@ import { TextFieldProps } from '.'
 
 type IconPositionProps = Pick<TextFieldProps, 'iconPosition'>
 
-type WrapperProps = Pick<TextFieldProps, 'disabled'> & { error?: boolean } & {
-  isLoading?: boolean
-}
-
-const wrapperModifiers = {
-  error: (theme: DefaultTheme) => css`
-    ${InputWrapper} {
-      border-color: ${theme.colors.red};
-    }
-
-    ${Icon},
-    ${Label} {
-      color: ${theme.colors.red};
-    }
-  `,
-  loading: (theme: DefaultTheme) => css`
-    ${InputWrapper} {
-      border-color: ${theme.colors.primary};
-    }
-  `,
-  disabled: (theme: DefaultTheme) => css`
-    ${Label},
-    ${Input},
-    ${Icon} {
-      cursor: not-allowed;
-      color: ${theme.colors.gray};
-
-      &::placeholder {
-        color: currentColor;
-      }
-    }
-  `
-}
+type WrapperProps = Pick<TextFieldProps, 'disabled'> & { error?: boolean }
 
 export const InputWrapper = styled.div`
   ${({ theme }) => css`
     display: flex;
+    align-items: center;
     background: ${theme.colors.lightGray};
     border-radius: 0.2rem;
     padding: 0 ${theme.spacings.xsmall};
@@ -63,7 +32,13 @@ export const Input = styled.input<IconPositionProps>`
     background: transparent;
     border: 0;
     outline: none;
-    width: 100%;
+    width: ${iconPosition === 'right' ? `calc(100% - 2.2rem)` : `100%`};
+
+    &:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 ${theme.spacings.small}
+        ${theme.colors.lightGray} inset;
+      filter: none
+    }
   `}
 `
 
@@ -78,53 +53,51 @@ export const Label = styled.label`
 export const Icon = styled.div<IconPositionProps>`
   ${({ theme, iconPosition }) => css`
     display: flex;
-    width: 2.2rem;
     color: ${theme.colors.gray};
     order: ${iconPosition === 'right' ? 1 : 0};
 
     & > svg {
-      width: 100%;
+      width: 2.2rem;
+      height: 100%;
     }
   `}
 `
 
-export const Error = styled.span`
+export const Error = styled.p`
   ${({ theme }) => css`
     color: ${theme.colors.red};
     font-size: ${theme.font.sizes.xsmall};
   `}
 `
 
-export const Wrapper = styled.div<WrapperProps>`
-  ${({ theme, disabled, error, isLoading }) => css`
-    ${error && wrapperModifiers.error(theme)};
-    ${isLoading && wrapperModifiers.loading(theme)}
-    ${disabled && wrapperModifiers.disabled(theme)};
-  `}
-`
+const wrapperModifiers = {
+  error: (theme: DefaultTheme) => css`
+    ${InputWrapper} {
+      border-color: ${theme.colors.red};
+    }
 
-export const Loading = styled.span`
-  ${({ theme }) => css`
-    position: relative;
-    padding-left: 2rem;
-    color: ${theme.colors.primary};
-    font-size: ${theme.font.sizes.xsmall};
-    &::before {
-      content: '';
-      top: 0;
-      left: 0;
-      position: absolute;
-      border: 0.2rem solid ${theme.colors.lightGray};
-      border-left-color: ${theme.colors.primary};
-      border-radius: 50%;
-      width: ${theme.font.sizes.small};
-      height: ${theme.font.sizes.small};
-      animation: spin 1s linear infinite;
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
+    ${Icon},
+    ${Label} {
+      color: ${theme.colors.red};
+    }
+  `,
+  disabled: (theme: DefaultTheme) => css`
+    ${Label},
+    ${Input},
+    ${Icon} {
+      cursor: not-allowed;
+      color: ${theme.colors.gray};
+
+      &::placeholder {
+        color: currentColor;
       }
     }
+  `
+}
+
+export const Wrapper = styled.div<WrapperProps>`
+  ${({ theme, error, disabled }) => css`
+    ${error && wrapperModifiers.error(theme)}
+    ${disabled && wrapperModifiers.disabled(theme)}
   `}
 `

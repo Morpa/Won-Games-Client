@@ -1,27 +1,26 @@
-import { InputHTMLAttributes, useState } from 'react'
+import { useState, InputHTMLAttributes } from 'react'
+
 import * as S from './styles'
 
 export type TextFieldProps = {
-  onInput?: (value: string) => void
+  onInputChange?: (value: string) => void
   label?: string
-  disabled?: boolean
   initialValue?: string
   icon?: React.ReactNode
   iconPosition?: 'left' | 'right'
+  disabled?: boolean
   error?: string
-  loading?: string
 } & InputHTMLAttributes<HTMLInputElement>
 
 const TextField = ({
   icon,
   iconPosition = 'left',
   label,
-  disabled = false,
   name,
   initialValue = '',
   error,
-  loading,
-  onInput,
+  disabled = false,
+  onInputChange,
   ...props
 }: TextFieldProps) => {
   const [value, setValue] = useState(initialValue)
@@ -30,11 +29,11 @@ const TextField = ({
     const newValue = e.currentTarget.value
     setValue(newValue)
 
-    !!onInput && onInput(newValue)
+    !!onInputChange && onInputChange(newValue)
   }
 
   return (
-    <S.Wrapper disabled={disabled} error={!!error} isLoading={!!loading}>
+    <S.Wrapper disabled={disabled} error={!!error}>
       {!!label && <S.Label htmlFor={name}>{label}</S.Label>}
       <S.InputWrapper>
         {!!icon && <S.Icon iconPosition={iconPosition}>{icon}</S.Icon>}
@@ -50,7 +49,6 @@ const TextField = ({
         />
       </S.InputWrapper>
       {!!error && <S.Error>{error}</S.Error>}
-      {!!loading && <S.Loading>{loading}</S.Loading>}
     </S.Wrapper>
   )
 }
