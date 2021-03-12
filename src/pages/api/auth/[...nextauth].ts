@@ -26,7 +26,7 @@ const options = {
         const data = await response.json()
 
         if (data.user) {
-          return { ...data, jwt: data.jwt }
+          return { ...data.user, jwt: data.jwt }
         } else {
           return null
         }
@@ -44,7 +44,7 @@ const options = {
       if (user) {
         token.id = user.id
         token.email = user.email
-        token.name = user.name
+        token.name = user.username
         token.jwt = user.jwt
       }
 
