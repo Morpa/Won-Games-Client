@@ -11,7 +11,8 @@ export default {
     name: 'email',
     icon: <Email />,
     initialValue: '',
-    placeholder: 'john.cage@gmail.com'
+    placeholder: 'john.cage@gmail.com',
+    disabled: false
   },
   argTypes: {
     onInput: { action: 'changed' },
@@ -33,14 +34,4 @@ export const withError: Story<TextFieldProps> = (args) => (
 
 withError.args = {
   error: 'Ops...something is wrong'
-}
-
-export const withLoading: Story<TextFieldProps> = (args) => (
-  <div style={{ maxWidth: 300, padding: 15 }}>
-    <TextField {...args} />
-  </div>
-)
-
-withLoading.args = {
-  loading: 'Validating...'
 }
