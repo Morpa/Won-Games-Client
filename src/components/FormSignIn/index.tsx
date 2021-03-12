@@ -49,7 +49,7 @@ const FormSignIn = () => {
 
     setLoading(false)
 
-    setFormError('Username or password is invalid')
+    setFormError('username or password is invalid')
   }
 
   return (

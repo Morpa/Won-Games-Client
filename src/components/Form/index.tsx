@@ -30,8 +30,7 @@ export const FormError = styled.div`
     font-size: ${theme.font.sizes.small};
 
     svg {
-      width: 1.6rem;
-      margin-right: ${theme.spacings.xxsmall};
+      width: ${theme.spacings.xsmall};
     }
   `}
 `
