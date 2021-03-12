@@ -8,7 +8,7 @@ import { MUTATION_REGISTER } from 'graphql/mutations/register'
 
 import TextField from 'components/TextField'
 import Button from 'components/Button'
-import { FormWrapper, FormLink } from 'components/Form'
+import { FormWrapper, FormLink, FormLoading } from 'components/Form'
 
 const FormSignUp = () => {
   const [values, setValues] = useState<UsersPermissionsRegisterInput>({
@@ -16,6 +16,8 @@ const FormSignUp = () => {
     email: '',
     password: ''
   })
+
+  const [loading, setLoading] = useState(false)
 
   const [createUser] = useMutation(MUTATION_REGISTER)
 
@@ -26,6 +28,8 @@ const FormSignUp = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault()
 
+    setLoading(true)
+
     createUser({
       variables: {
         input: {
@@ -35,6 +39,8 @@ const FormSignUp = () => {
         }
       }
     })
+
+    setLoading(false)
   }
 
   return (
@@ -72,8 +78,8 @@ const FormSignUp = () => {
           icon={<Lock />}
         />
 
-        <Button type="submit" size="large" fullWidth>
-          Sign up now
+        <Button type="submit" size="large" fullWidth disabled={loading}>
+          {loading ? <FormLoading /> : <span>Sign up now</span>}
         </Button>
 
         <FormLink>
