@@ -29,8 +29,12 @@ export const handlers = [
         )
       }
       //success
-      return
-      res(ctx.status(200), ctx.json({ ok: true }))
+      return res(
+        ctx.status(200),
+        ctx.json({
+          ok: true
+        })
+      )
     }
   )
 ]
