@@ -4,39 +4,39 @@
 // This file was automatically generated and should not be edited.
 
 // ====================================================
-// GraphQL query operation: QueryWishList
+// GraphQL query operation: QueryWishlist
 // ====================================================
 
-export interface QueryWishList_wishlists_games_cover {
+export interface QueryWishlist_wishlists_games_cover {
   __typename: "UploadFile";
   url: string;
 }
 
-export interface QueryWishList_wishlists_games_developers {
+export interface QueryWishlist_wishlists_games_developers {
   __typename: "Developer";
   name: string;
 }
 
-export interface QueryWishList_wishlists_games {
+export interface QueryWishlist_wishlists_games {
   __typename: "Game";
   id: string;
   name: string;
   slug: string;
-  cover: QueryWishList_wishlists_games_cover | null;
-  developers: QueryWishList_wishlists_games_developers[];
+  cover: QueryWishlist_wishlists_games_cover | null;
+  developers: QueryWishlist_wishlists_games_developers[];
   price: number;
 }
 
-export interface QueryWishList_wishlists {
+export interface QueryWishlist_wishlists {
   __typename: "Wishlist";
   id: string;
-  games: QueryWishList_wishlists_games[];
+  games: QueryWishlist_wishlists_games[];
 }
 
-export interface QueryWishList {
-  wishlists: QueryWishList_wishlists[];
+export interface QueryWishlist {
+  wishlists: QueryWishlist_wishlists[];
 }
 
-export interface QueryWishListVariables {
+export interface QueryWishlistVariables {
   identifier: string;
 }
