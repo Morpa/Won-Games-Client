@@ -1,6 +1,6 @@
 import { FormEvent, useEffect, useState } from 'react'
 import { Session } from 'next-auth/client'
-import { CardElement } from '@stripe/react-stripe-js'
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { StripeCardElementChangeEvent } from '@stripe/stripe-js'
 import { ShoppingCart, ErrorOutline } from '@styled-icons/material-outlined'
 
@@ -18,6 +18,9 @@ type PaymentFormProps = {
 
 const PaymentForm = ({ session }: PaymentFormProps) => {
   const { items } = useCart()
+  const stripe = useStripe()
+  const elements = useElements()
+
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
   const [disabled, setDisabled] = useState(true)
@@ -27,26 +30,19 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
   useEffect(() => {
     async function setPaymentMode() {
       if (items.length) {
-        // bater na API /orders/create-payment-intent
         const data = await createPaymentIntent({
           items,
           token: session.jwt
         })
 
-        // se eu receber freeGames: true => setFreeGames
-        // faço o fluxo de jogo gratuito
         if (data.freeGames) {
           setFreeGames(true)
           return
         }
 
-        // se eu receber um erro
-        // setError
         if (data.error) {
           setError(data.error)
         } else {
-          // senão o paymentIntent foi válido
-          // setClientSecret
           setFreeGames(false)
           setClientSecret(data.client_secret)
         }
@@ -64,6 +60,25 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault()
     setLoading(true)
+
+    const payload = await stripe!.confirmCardPayment(clientSecret, {
+      payment_method: {
+        card: elements!.getElement(CardElement)!
+      }
+    })
+
+    if (payload.error) {
+      setError(`Payment failed ${payload.error.message}`)
+      setLoading(false)
+    } else {
+      setError(null)
+      setLoading(false)
+
+      console.log('WOW DUDE')
+
+      // salvar a compra no banco do Strapi
+      // redirectionar para a página de Sucesso
+    }
   }
 
   return (
