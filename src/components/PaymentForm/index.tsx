@@ -26,7 +26,10 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
     async function setPaymentMode() {
       if (items.length) {
         // bater na API /orders/create-payment-intent
-        const data = await createPaymentIntent({ items, token: session.jwt })
+        const data = await createPaymentIntent({
+          items,
+          token: session.jwt
+        })
 
         // se eu receber freeGames: true => setFreeGames
         // faço o fluxo de jogo gratuito
@@ -42,6 +45,7 @@ const PaymentForm = ({ session }: PaymentFormProps) => {
         } else {
           // senão o paymentIntent foi válido
           // setClientSecret
+          setFreeGames(false)
           setClientSecret(data.client_secret)
         }
       }
