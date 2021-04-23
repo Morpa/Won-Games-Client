@@ -4,7 +4,7 @@ import { GameFragment } from 'graphql/fragments/game'
 import { HighlightFragment } from 'graphql/fragments/highlight'
 
 export const QUERY_RECOMMENDED = gql`
-  query queryRecommended {
+  query QueryRecommended {
     recommended {
       section {
         title

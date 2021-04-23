@@ -4,7 +4,7 @@ import { GetStaticProps } from 'next'
 import { initializeApollo } from 'utils/apollo'
 import { QueryGames, QueryGamesVariables } from 'graphql/generated/QueryGames'
 import { QUERY_GAMES, QUERY_GAME_BY_SLUG } from 'graphql/queries/games'
-import { queryRecommended } from 'graphql/generated/queryRecommended'
+import { QueryRecommended } from 'graphql/generated/QueryRecommended'
 import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
 import {
   QueryGameBySlug,
@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   //Get Recommended Game
   const {
     data: recommendedSection
-  } = await apolloClient.query<queryRecommended>({
+  } = await apolloClient.query<QueryRecommended>({
     query: QUERY_RECOMMENDED
   })
 

@@ -1,7 +1,7 @@
 import { GetServerSidePropsContext } from 'next'
 
 import { initializeApollo } from 'utils/apollo'
-import { queryRecommended } from 'graphql/generated/queryRecommended'
+import { QueryRecommended } from 'graphql/generated/QueryRecommended'
 import { QUERY_RECOMMENDED } from 'graphql/queries/recommended'
 import { gamesMapper, highlightMapper } from 'utils/mappers'
 import protectedRoutes from 'utils/protected-routes'
@@ -32,7 +32,7 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
   })
 
-  const { data } = await apolloClient.query<queryRecommended>({
+  const { data } = await apolloClient.query<QueryRecommended>({
     query: QUERY_RECOMMENDED
   })
 
