@@ -1,6 +1,7 @@
 import Empty from 'components/Empty'
 import GameItem, { GameItemProps } from 'components/GameItem'
 import Heading from 'components/Heading'
+
 import * as S from './styles'
 
 export type OrdersListProps = {
