@@ -1,4 +1,5 @@
-import { useEffect, useState, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
+import Image from 'next/image'
 import { ArrowBackIos as ArrowLeft } from '@styled-icons/material-outlined/ArrowBackIos'
 import { ArrowForwardIos as ArrowRight } from '@styled-icons/material-outlined/ArrowForwardIos'
 import { Close } from '@styled-icons/material-outlined/Close'
@@ -9,9 +10,9 @@ import Slider, { SliderSettings } from 'components/Slider'
 import * as S from './styles'
 
 const commonSettings: SliderSettings = {
-  arrows: true,
   infinite: false,
   lazyLoad: 'ondemand',
+  arrows: true,
   nextArrow: <ArrowRight aria-label="next image" />,
   prevArrow: <ArrowLeft aria-label="previous image" />
 }
@@ -71,7 +72,6 @@ const Gallery = ({ items }: GalleryProps) => {
     }
 
     window.addEventListener('keyup', handleKeyUp)
-
     return () => window.removeEventListener('keyup', handleKeyUp)
   }, [])
 
@@ -79,7 +79,9 @@ const Gallery = ({ items }: GalleryProps) => {
     <S.Wrapper>
       <Slider ref={slider} settings={settings}>
         {items.map((item, index) => (
-          <img
+          <Image
+            width={295}
+            height={165}
             role="button"
             key={`thumb-${index}`}
             src={item.src}
@@ -91,6 +93,7 @@ const Gallery = ({ items }: GalleryProps) => {
           />
         ))}
       </Slider>
+
       <S.Modal isOpen={isOpen} aria-label="modal" aria-hidden={!isOpen}>
         <S.Close
           role="button"
@@ -103,7 +106,13 @@ const Gallery = ({ items }: GalleryProps) => {
         <S.Content>
           <Slider ref={slider} settings={modalSettings}>
             {items.map((item, index) => (
-              <img key={`gallery-${index}`} src={item.src} alt={item.label} />
+              <Image
+                width={1200}
+                height={675}
+                key={`gallery-${index}`}
+                src={item.src}
+                alt={item.label}
+              />
             ))}
           </Slider>
         </S.Content>
