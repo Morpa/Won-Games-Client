@@ -1,15 +1,13 @@
 import styled, { css } from 'styled-components'
 import media from 'styled-media-query'
-
 import { HighlightProps } from '.'
 
-type WrapperProps = Pick<HighlightProps, 'backgroundImage' | 'alignment'>
+type WrapperProps = Pick<HighlightProps, 'alignment'>
 
 const wrapperModifiers = {
   right: () => css`
     grid-template-areas: 'floatimage content';
     grid-template-columns: 1.3fr 2fr;
-
     ${Content} {
       text-align: right;
     }
@@ -18,23 +16,19 @@ const wrapperModifiers = {
   left: () => css`
     grid-template-areas: 'content floatimage';
     grid-template-columns: 2fr 1.3fr;
-
     ${Content} {
       text-align: left;
     }
 
-    ${FloatImage} {
+    ${FloatImageWrapper} {
       justify-self: end;
     }
   `
 }
 
 export const Wrapper = styled.section<WrapperProps>`
-  ${({ backgroundImage, alignment }) => css`
+  ${({ alignment }) => css`
     position: relative;
-    background-image: url(${backgroundImage});
-    background-position: center center;
-    background-size: cover;
     height: 23rem;
     display: grid;
 
@@ -46,15 +40,20 @@ export const Wrapper = styled.section<WrapperProps>`
       background-color: rgba(0, 0, 0, 0.6);
     }
 
+    img {
+      position: absolute;
+      object-fit: cover;
+    }
+
     ${media.greaterThan('medium')`
-      height:32rem;
+      height: 32rem;
     `}
 
     ${wrapperModifiers[alignment!]()}
   `}
 `
 
-export const FloatImage = styled.img`
+export const FloatImageWrapper = styled.div`
   ${({ theme }) => css`
     grid-area: floatimage;
     z-index: ${theme.layers.base};
@@ -62,8 +61,13 @@ export const FloatImage = styled.img`
     max-width: 100%;
     align-self: end;
 
+    img {
+      position: relative;
+      object-fit: contain;
+    }
+
     ${media.greaterThan('medium')`
-      max-height:32rem;
+      max-height: 32rem;
     `}
   `}
 `
@@ -72,7 +76,7 @@ export const Content = styled.div`
   ${({ theme }) => css`
     grid-area: content;
     z-index: ${theme.layers.base};
-    padding: ${theme.spacings.xxsmall};
+    padding: ${theme.spacings.xsmall};
 
     ${media.greaterThan('medium')`
       align-self: end;
@@ -98,8 +102,7 @@ export const SubTitle = styled.h3`
     font-size: ${theme.font.sizes.small};
     font-weight: ${theme.font.light};
     color: ${theme.colors.white};
-    margin-bottom: ${theme.spacings.small};
-
+    margin-bottom: ${theme.spacings.medium};
     ${media.greaterThan('medium')`
       font-size: ${theme.font.sizes.large};
     `}
