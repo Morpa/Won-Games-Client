@@ -26,7 +26,7 @@
     ]
   },
   "dependencies": {
-    "@apollo/client": "^3.3.15",
+    "@apollo/client": "^3.3.16",
     "@stripe/react-stripe-js": "^1.4.0",
     "@stripe/stripe-js": "^1.14.0",
     "@styled-icons/boxicons-regular": "^10.23.0",
@@ -40,8 +40,8 @@
     "joi": "^17.4.0",
     "lodash.xor": "^4.5.0",
     "next": "10.2.0",
-    "next-auth": "^3.19.2",
-    "next-pwa": "^5.2.15",
+    "next-auth": "^3.19.5",
+    "next-pwa": "^5.2.21",
     "next-seo": "^4.24.0",
     "nextjs-progressbar": "^0.0.9",
     "polished": "^4.1.2",
@@ -69,7 +69,7 @@
     "@types/styled-components": "^5.1.9",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
-    "apollo": "^2.32.10",
+    "apollo": "^2.32.12",
     "babel-loader": "^8.2.2",
     "babel-plugin-styled-components": "^1.12.0",
     "eslint": "^7.25.0",
