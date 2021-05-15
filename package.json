@@ -10,6 +10,8 @@
     "typecheck": "tsc --project tsconfig.json --noEmit",
     "test": "jest --maxWorkers=25%",
     "test:watch": "yarn test --watch --maxWorkers=55% --detectOpenHandles",
+    "test:ci":"jest --runInBand",
+    "cy:open": "cypress open",
     "schema:download": "apollo client:download-schema --endpoint=http://localhost:1337/graphql schema-temp.gql",
     "schema:convert": "node convertToNonNull.js",
     "codegen": "apollo codegen:generate --target typescript --excludes=node_modules/ --includes=src/graphql/**/*.ts --localSchemaFile schema.gql --tagName=gql --outputFlat src/graphql/generated",
