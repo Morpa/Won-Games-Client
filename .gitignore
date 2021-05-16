@@ -37,3 +37,7 @@ public/workbox-*.js
 storybook-static
 
 .vercel
+
+# cypress
+cypress/screenshots
+cypress/videos
