@@ -38,6 +38,12 @@ describe('Explore Page', () => {
 
     cy.getByDataCy('game-card').first().within(() => {
       cy.findByText(/free/i).should('not.exist')
+      cy
+      .findByText(/^\$\d+(\.\d{1,2})?/)
+      .invoke('text')
+      .then($el => $el.replace('$', ''))
+      .then(parseFloat)
+      .should('be.gt', 0)
     })
   });
 });
