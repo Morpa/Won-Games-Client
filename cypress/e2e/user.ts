@@ -7,7 +7,6 @@ describe('User', () => {
     const user = createUser()
 
     cy.visit('/sign-up')
-
     cy.signUp(user)
 
     cy.url().should('eq', `${Cypress.config().baseUrl}/`)
@@ -16,10 +15,9 @@ describe('User', () => {
 
   it('should sign in and sign out', () => {
     cy.visit('/sign-in')
+    cy.signIn()
 
-    cy.findAllByPlaceholderText(/email/i).type('e2e@wongames.com')
-    cy.findAllByPlaceholderText(/password/i).type('123456')
-    cy.findByRole('button', { name: /sign in now/i }).click()
+    cy.url().should('eq', `${Cypress.config().baseUrl}/`)
 
     cy.findByText(/cypress/i).should('exist').click()
     cy.findByText(/sign out/i).click()
