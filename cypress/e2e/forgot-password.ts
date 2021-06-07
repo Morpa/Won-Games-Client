@@ -46,10 +46,10 @@ describe('Forgot Password', () => {
 
     cy.visit('/forgot-password')
 
-    cy.findAllByPlaceholderText(/email/i).type('ci@wongames.com')
+    cy.findAllByPlaceholderText(/email/i).type('false@wongames.com')
     cy.findByRole('button', { name: /send email/i }).click()
 
-    // eu espero receber a mensagem de sucesso
+    // eu espero receber a mensagem de erro
     cy.findByText(/This email does not exist/i).should('exist')
   });
 });
