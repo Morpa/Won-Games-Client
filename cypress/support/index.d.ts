@@ -71,6 +71,18 @@ declare namespace Cypress {
      * Custom command to check if value is greater than
      * @example cy.shouldBeGreaterThan(100)
      */
-      shouldBeGreaterThan(value: number): Chainable<Element>
+    shouldBeGreaterThan(value: number): Chainable<Element>
+
+    /**
+     * Custom command to add game to cart by index
+     * @example cy.addToCartByIndex(1)
+     */
+     addToCartByIndex(value: number): Chainable<Element>
+
+     /**
+      * Custom command to remove game from cart by index
+      * @example cy.removeFromCartByIndex(2)
+      */
+     removeFromCartByIndex(value: number): Chainable<Element>
   }
 }
