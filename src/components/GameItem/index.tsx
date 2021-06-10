@@ -37,7 +37,7 @@ const GameItem = ({
           <img src={img} alt={title} />
         </S.ImageBox>
 
-        <S.Content>
+        <S.Content data-cy="game-item">
           <S.Title>
             {title}
             {!!downloadLink && (
