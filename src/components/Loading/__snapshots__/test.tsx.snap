@@ -13,10 +13,7 @@ exports[`<Loading /> should render the heading 1`] = `
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-}
-
-.c0 > img {
-  max-width: 20%;
+  margin-top: 3.2rem;
 }
 
 .c1 {
@@ -27,7 +24,7 @@ exports[`<Loading /> should render the heading 1`] = `
 }
 
 @media (max-width:768px) {
-  .c0 > img {
+  .c0 {
     min-width: 22rem;
   }
 }
@@ -37,8 +34,10 @@ exports[`<Loading /> should render the heading 1`] = `
 >
   <img
     alt="Loading more games"
+    height="60"
     role="img"
     src="/img/loading.gif"
+    width="60"
   />
   <p
     class="c1"
@@ -46,4 +45,4 @@ exports[`<Loading /> should render the heading 1`] = `
     Loading...
   </p>
 </div>
-`
+`;

@@ -1,8 +1,15 @@
+import Image from 'next/image'
 import * as S from './styles'
 
 const Loading = () => (
   <S.Wrapper>
-    <img src="/img/loading.gif" alt="Loading more games" role="img" />
+    <Image
+      src="/img/loading.gif"
+      alt="Loading more games"
+      role="img"
+      width={60}
+      height={60}
+    />
     <S.Description>Loading...</S.Description>
   </S.Wrapper>
 )

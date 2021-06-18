@@ -155,4 +155,4 @@ exports[`<Banner /> should render correctly 1`] = `
     </a>
   </div>
 </main>
-`;
+`
