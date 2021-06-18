@@ -246,4 +246,4 @@ exports[`<CartList /> should render the cart list 1`] = `
     </span>
   </div>
 </main>
-`;
+`

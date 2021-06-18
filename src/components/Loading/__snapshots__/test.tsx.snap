@@ -45,4 +45,4 @@ exports[`<Loading /> should render the heading 1`] = `
     Loading...
   </p>
 </div>
-`;
+`
